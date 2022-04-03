@@ -8,7 +8,7 @@ class Blacklist(db.Model):
     __tablename__ = 'Blacklist'
 
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(100))
+    email = db.Column(db.String(100), unique=True)
     app_uuid = db.Column(db.String(100))
     blocked_reason = db.Column(db.Text())
     ip =  db.Column(db.String(100))

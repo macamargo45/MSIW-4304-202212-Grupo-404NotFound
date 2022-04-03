@@ -49,14 +49,14 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{server}}/api/blacklists/3",
+					"raw": "{{server}}/api/blacklists/andres.benavides@uniandes.edu.co",
 					"host": [
 						"{{server}}"
 					],
 					"path": [
 						"api",
 						"blacklists",
-						"3"
+						"andres.benavides@uniandes.edu.co"
 					]
 				}
 			},
@@ -79,7 +79,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\": \"miguel.camargo@uniandes.edu.co\",\n    \"app_uuid\": \"646464646464\",\n    \"blocked_reason\": \"muy mal\"\n}",
+					"raw": "{\n    \"email\": \"miguel.camargo@uniandes.edu.co\",\n    \"app_uuid\": \"jsaghkjashsajkahskasj\",\n    \"blocked_reason\": \"muy malos comentarios\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"

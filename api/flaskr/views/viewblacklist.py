@@ -25,6 +25,9 @@ class ViewBlacklists(Resource):
     @jwt_required()
     def post(self):
         try:
+            exist_email = Blacklist.query.filter(Blacklist.email == request.json["email"]).first()
+            if(exist_email):
+                return helper.handle_exception("Email ya registrado")
 
             blacklist = Blacklist(
                 email=request.json["email"],
@@ -45,9 +48,10 @@ class ViewBlacklists(Resource):
 
 class ViewBlacklist(Resource):
     @jwt_required()
-    def get(self, id_blacklist):
+    def get(self, blacklist_email):
         try:
-            tarea = Blacklist.query.get_or_404(id_blacklist)
+            print ("EMAIL:", blacklist_email)
+            tarea = Blacklist.query.filter(Blacklist.email == blacklist_email).one()
             return blacklist_schema.dump(tarea), 200
         except BaseException as err:
             return helper.handle_exception(err)

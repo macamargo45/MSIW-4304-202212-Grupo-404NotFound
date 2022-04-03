@@ -24,4 +24,4 @@ def gunicorn():
 
 api.add_resource(ViewHealthCheck, '/api/healthcheck')
 api.add_resource(ViewBlacklists, '/api/blacklists')
-api.add_resource(ViewBlacklist, '/api/blacklists/<int:id_blacklist>')
+api.add_resource(ViewBlacklist, '/api/blacklists/<string:blacklist_email>')
