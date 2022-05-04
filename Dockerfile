@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
-FROM alpine:3.14
+FROM python:3.9
 
 EXPOSE 5000
 
@@ -10,7 +10,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # install depencies 
-RUN apk add py3-pip && pip install --upgrade pip
+#RUN apk add py3-pip && pip install --upgrade pip
 
 WORKDIR /app
 COPY . /app
