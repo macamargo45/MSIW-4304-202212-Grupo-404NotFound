@@ -10,7 +10,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
 # install depencies 
-#RUN apk add py3-pip && pip install --upgrade pip
+RUN apk add py3-pip && pip install --upgrade pip
 
 WORKDIR /flaskr
 COPY . /app
