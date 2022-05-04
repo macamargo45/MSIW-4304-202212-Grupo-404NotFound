@@ -3,8 +3,21 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - pip install -r requirements.txt
-      - python3 -m unittest -v 
+      - echo ------ Pre_Build------
+      - echo Logging in to AWS ECR ...
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 824166451111.dkr.ecr.us-east-1.amazonaws.com
+  build:
+    commands:
+      - echo ------ Build Started------
+      - echo ------ Building the Docker image...------
+      - docker build -t app-uandes-devops-python .
+      - echo ------ Tag the Docker image to will push ECR repository...------
+      - docker tag app-uandes-devops-python:latest 824166451111.dkr.ecr.us-east-1.amazonaws.com/app-uandes-devops-python:latest
+  post_build:
+    commands: 
+      - echo ------ Post_Build Started------
+      - echo ------ Push the Docker image with tag of previous step...------
+      - docker push 824166451111.dkr.ecr.us-east-1.amazonaws.com/app-uandes-devops-python:latest
 artifacts:
   files:
     - '**/*'
