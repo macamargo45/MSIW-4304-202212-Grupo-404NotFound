@@ -12,7 +12,7 @@ ENV PYTHONUNBUFFERED=1
 # install depencies 
 #RUN apk add py3-pip && pip install --upgrade pip
 
-WORKDIR /app
+WORKDIR /flaskr
 COPY . /app
 
 # Install pip requirements
