@@ -47,7 +47,7 @@ class ViewBlacklists(Resource):
 
 
 class ViewBlacklist(Resource):
-    @jwt_required()
+    #@jwt_required()
     def get(self, blacklist_email):
         try:
             print ("EMAIL:", blacklist_email)
