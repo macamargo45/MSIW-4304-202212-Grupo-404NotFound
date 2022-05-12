@@ -9,7 +9,7 @@ COPY . /app
 
 # Install pip requirements
 COPY requirements.txt .
-RUN python -m pip install -r requirements.txt --ignore-installed pyOpenSSL
+RUN pip install -r requirements.txt
 
 EXPOSE 5000
 
