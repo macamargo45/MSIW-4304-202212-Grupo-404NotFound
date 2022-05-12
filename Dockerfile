@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python HHFM
-FROM alpine:3.14
+FROM 824166451111.dkr.ecr.us-east-1.amazonaws.com/python_app
 
 # install depencies 
 RUN apk add py3-pip && pip install --upgrade pip
