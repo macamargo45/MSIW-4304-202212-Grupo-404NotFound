@@ -1,5 +1,15 @@
-# For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:3.9
+# For more information, please refer to https://aka.ms/vscode-docker-python HHFM
+FROM public.ecr.aws/docker/library/alpine:3.15.4
+
+# install depencies 
+RUN apk add py3-pip && pip install --upgrade pip
+
+WORKDIR /app
+COPY . /app
+
+# Install pip requirements
+COPY requirements.txt .
+RUN python -m pip install -r requirements.txt --ignore-installed pyOpenSSL
 
 EXPOSE 5000
 
@@ -9,12 +19,6 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-# Install pip requirements
-COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
-
-WORKDIR /app
-COPY . /app
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-CMD ["sleep", "infinity"]
+CMD ["python3", "src/application.py"]
