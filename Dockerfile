@@ -1,12 +1,8 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python HHFM
-FROM ubuntu:18.04
-
-# Install dependencies
-RUN apt-get update && \
- apt-get -y install apache2
+FROM alpine:3.14
 
 # install depencies 
-#RUN apk add py3-pip && pip install --upgrade pip
+RUN apk add py3-pip && pip install --upgrade pip
 
 WORKDIR /app
 COPY . /app
