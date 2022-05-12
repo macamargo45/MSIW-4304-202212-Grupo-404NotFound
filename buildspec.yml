@@ -13,10 +13,10 @@ phases:
       - docker build -t python_app .
       - docker tag python_app:latest 824166451111.dkr.ecr.us-east-1.amazonaws.com/python_app:latest
   post_build:
-    commands: 
+    commands:
       - echo ------ Post_Build Started------
       - echo ------ Push the Docker image with tag of previous step...------
       - docker push 824166451111.dkr.ecr.us-east-1.amazonaws.com/python_app:latest
 artifacts:
   files:
-    - '**/*'
+    - "**/*"
