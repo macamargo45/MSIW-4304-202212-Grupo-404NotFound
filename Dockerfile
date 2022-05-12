@@ -1,5 +1,5 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python HHFM
-FROM public.ecr.aws/docker/library/alpine:3.15.4
+FROM public.ecr.aws/docker/library/alpine:3.14
 
 # install depencies 
 RUN apk add py3-pip && pip install --upgrade pip
