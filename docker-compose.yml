@@ -5,49 +5,9 @@ services:
   api:
     image: api_srvc
     build:
-      context: ./api
+      context: ./
       dockerfile: ./Dockerfile
     ports:
       - 5000:5000
-    depends_on:
-      - postgres
-    networks:
-      - postgres
-    env_file:
-      - .env.dev
-    command: gunicorn -w 4 -b 0.0.0.0:5000 flaskr.app:app
-
-  postgres:
-    container_name: postgres_container
-    image: postgres
-    env_file:
-      - .env.dev
-    volumes:
-       - postgres:/data/postgres
-    ports:
-      - "5433:5432"
-    networks:
-      - postgres
-    restart: unless-stopped
-  
-  pgadmin:
-    container_name: pgadmin_container
-    image: dpage/pgadmin4
-    env_file:
-      - .env.dev
-    volumes:
-       - pgadmin:/var/lib/pgadmin
-    ports:
-      - "${PGADMIN_PORT:-5050}:80"
-    networks:
-      - postgres
-    restart: unless-stopped
-
-networks:
-  postgres:
-    driver: bridge
-
-volumes:
-    postgres:
-    pgadmin:
+    #command: gunicorn -w 4 -b 0.0.0.0:5000 application:application
      

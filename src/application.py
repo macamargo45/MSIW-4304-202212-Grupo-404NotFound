@@ -6,22 +6,20 @@ from flaskr.models.models import db
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 
-app = create_app('default')
-app_context = app.app_context()
+application = create_app()
+app_context = application.app_context()
 app_context.push()
 
-db.init_app(app)
+db.init_app(application)
 db.create_all()
 
-cors = CORS(app)
-jwt = JWTManager(app)
-api = Api(app)
-
-# Punto de arranque: gunicorn
-def gunicorn():
-    # Retornar el objeto de la aplicacion
-    return app
+cors = CORS(application)
+jwt = JWTManager(application)
+api = Api(application)
 
 api.add_resource(ViewHealthCheck, '/api/healthcheck')
 api.add_resource(ViewBlacklists, '/api/blacklists')
 api.add_resource(ViewBlacklist, '/api/blacklists/<string:blacklist_email>')
+
+if __name__ == "__main__":
+    application.run(host = "0.0.0.0", port = 5000, debug = True)

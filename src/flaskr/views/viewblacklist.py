@@ -50,8 +50,10 @@ class ViewBlacklist(Resource):
     @jwt_required()
     def get(self, blacklist_email):
         try:
-            print ("EMAIL:", blacklist_email)
-            tarea = Blacklist.query.filter(Blacklist.email == blacklist_email).one()
-            return blacklist_schema.dump(tarea), 200
+            tarea = Blacklist.query.filter(Blacklist.email == blacklist_email).first()
+            if tarea is None:
+                return "email no encontrado",404
+            else:
+                return blacklist_schema.dump(tarea), 200
         except BaseException as err:
             return helper.handle_exception(err)
